@@ -2,7 +2,7 @@ import throttle from 'lodash.throttle';
 
 const userFormEmail = document.querySelector('.feedback-form');
 
-const userData = {};
+let userData = JSON.parse(localStorage.getItem("feedback-form-state")) || {};
 
 const fillContactFormFields = () => {
 
@@ -52,9 +52,9 @@ const onContactFormElSubmit = event => {
 
    event.preventDefault();
    event.target.reset();
-    
+   userData = {};
    localStorage.removeItem("feedback-form-state");
 
 };
 
-userFormEmail.addEventListener('submit', onContactFormElSubmit)
+userFormEmail.addEventListener('submit', onContactFormElSubmit);
